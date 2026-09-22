@@ -33,9 +33,9 @@ The generated evaluation is organized into four core sections:
 
 | Requirement | Specification |
 | :--- | :--- |
-| **CPU / GPU** | AVX2-compatible CPU or Apple Silicon (M1/M2/M3) |
-| **Memory** | Minimum 6 GB VRAM |
-| **Disk Space** | 3 GB free disk space |
+| **CPU** | AVX2-compatible x86_64 CPU or Apple Silicon (M1/M2/M3) |
+| **GPU** | Minimum 6 GB VRAM (Modern Architecture with Tensor Cores recommended for optimal inference speeds) |
+| **Disk Space** | 4 GB free disk space |
 | **Python** | Python 3.9 or newer |
 | **Ollama** | Installed and running with `qwen2.5:3b` model |
 
