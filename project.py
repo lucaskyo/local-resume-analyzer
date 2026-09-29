@@ -14,22 +14,22 @@ def file_select():
     root_folder = Path(__file__).parent
     pdf_files = sorted(root_folder.glob("*.pdf"))
     if not pdf_files:
-        print("No PDF files found in the folder.")
-    else:
-        print("PDF files found:")
-        for idx, pdf in enumerate(pdf_files, start=1):
-            print(f"[{idx}] {pdf.name}")
-        while True:
-            try:
-                escolha = int(input("Enter the number of the desired file: "))
-                if 1 <= escolha <= len(pdf_files):
-                    selected_file = pdf_files[escolha - 1]
-                    print(f"Selected file: {selected_file.name}")
-                    break
-                else:
-                    print("Invalid option. Please enter a number from the list.")
-            except ValueError:
-                print("Invalid input. Please enter numbers only.")
+        raise FileNotFoundError("No resume PDF files found in the project folder.")
+
+    print("PDF files found:")
+    for idx, pdf in enumerate(pdf_files, start=1):
+        print(f"[{idx}] {pdf.name}")
+    while True:
+        try:
+            escolha = int(input("Enter the number of the desired file: "))
+            if 1 <= escolha <= len(pdf_files):
+                selected_file = pdf_files[escolha - 1]
+                print(f"Selected file: {selected_file.name}")
+                break
+            else:
+                print("Invalid option. Please enter a number from the list.")
+        except ValueError:
+            print("Invalid input. Please enter numbers only.")
     return selected_file
 
 def job_file_select():
@@ -88,7 +88,7 @@ def write_response(text):
     pdf.set_auto_page_break(auto=True, margin=20)
     pdf.add_page()
     pdf.set_font("Helvetica", size=8)
-    pdf.multi_cell(w=0, h=5, text=text)
+    pdf.multi_cell(w=0, h=5, text=text.encode("latin-1", "replace").decode("latin-1"))
     pdf.output("output.pdf")
     print("Output PDF generated successfully.")
 
