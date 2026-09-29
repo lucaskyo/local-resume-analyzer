@@ -4,16 +4,16 @@
 ![Ollama Engine](https://img.shields.io/badge/Ollama-qwen2.5--3b-black)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-An AI-powered CLI application that analyzes resume PDFs locally using Ollama (`qwen2.5:3b`) and generates structured, actionable feedback exported as a formatted PDF.
+An AI-powered CLI application that uses Ollama (`qwen2.5:3b`) to compare resume PDFs with job descriptions and generate structured, actionable feedback exported as a formatted PDF.
 
 ---
 
 ## 📌 Features
 
-- **Local PDF Discovery**: Automatically detects all `.pdf` files in the project root directory.
+- **Local PDF Discovery**: Automatically detects resume `.pdf` files in the project root directory and job `.pdf` files in the `positions` folder.
 - **Interactive CLI**: Simple terminal prompt to select which resume you want to analyze.
 - **Privacy-First**: Runs 100% locally via Ollama with no external API calls or data sharing.
-- **Structured Evaluation**: Generates detailed professional feedback formatted in Portuguese.
+- **Structured Evaluation**: Compares the resume with a selected job description and generates detailed professional feedback formatted in Portuguese.
 - **PDF Report Export**: Exports the generated review directly to `output.pdf`.
 
 ---
@@ -58,13 +58,14 @@ pip install -r requirements.txt
 ```
 ### 3 - Usage
 \- Place one or more resume PDF files in the same folder as project.py.<br>
+\- Place one or more job description PDF files in the `positions` folder.<br>
 \- Ensure Ollama is running in the background.<br>
 \- Start the application:<br>
 
 ```bash
 python project.py
 ```
-\- Enter the number corresponding to the resume you wish to review.
+\- Enter the number corresponding to the resume you wish to review and then the number corresponding to the job description.
 <br>
 
 >[!NOTE]
@@ -76,11 +77,11 @@ python project.py
 ```Plaintext
 .
 ├── project.py         # Main CLI application logic & PDF processing
+├── positions/             # Job description PDF files
 ├── requirements.txt   # Required Python dependencies
 └── output.pdf         # Generated review PDF (created upon execution)
 ```
-## ⚠️ Limitations
-- Single Page Processing: Only the first page of the selected PDF is extracted and analyzed.
+## ⚠️ Important Considerations
 - Text Layer Required: Scanned image-only PDFs without an embedded text layer are not supported.
 - Local LLM Reliance: Quality depends entirely on the local Ollama model's generation capabilities.
 - Advisory Nature: Generated reviews are AI-assisted recommendations and should be reviewed before taking professional decisions.
