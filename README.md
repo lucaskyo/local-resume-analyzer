@@ -4,7 +4,7 @@
 ![Ollama Engine](https://img.shields.io/badge/Ollama-qwen2.5--3b-black)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-An AI-powered **Human Resources recruiting assistant** that uses Ollama (`qwen2.5:3b`) to compare resume PDFs with job descriptions and generate structured, actionable feedback exported as a formatted PDF. It supports recruiters and HR professionals during resume screening, profile positioning and interview preparation.
+An AI-powered **Human Resources recruiting assistant** that uses Ollama (`qwen2.5:3b`) to compare resume PDFs with job descriptions and generate structured feedback exported as portuguese formatted PDF. It supports recruiters and HR professionals during resume screening, profile positioning and interview preparation.
 
 > [!NOTE]  
 > The tool is designed to make the initial recruiting analysis faster and more consistent. It does not replace the professional judgment of the recruiter or the final hiring decision.
@@ -16,33 +16,15 @@ An AI-powered **Human Resources recruiting assistant** that uses Ollama (`qwen2.
 - **Local PDF Discovery**: Automatically detects resume `.pdf` files in the `resumes` folder and job `.pdf` files in the `positions` folder.
 - **Interactive CLI**: Simple terminal prompt to select which resume you want to analyze.
 - **Privacy-First**: Runs 100% locally via Ollama with no external API calls or data sharing.
-- **HR Recruiting Support**: Helps recruiters and HR teams identify profile alignment, gaps and relevant interview topics for each position.
-- **Structured Evaluation**: Compares the resume with a selected job description and generates detailed professional feedback formatted in Portuguese.
 - **PDF Report Export**: Saves each generated review in the `output` folder.
-
-## 👥 Intended Users
-
-This tool is intended for:
-
-- Recruiters conducting initial resume screening.
-- HR professionals comparing candidates with specific job requirements.
-- Hiring teams preparing focused questions for interviews.
-- Professionals who want an objective first review of a resume against a target position.
-
----
 
 ## 📊 Review Structure
 
-The model returns only a validated JSON report. Python controls the PDF layout, so the generated evaluation always uses the same order, titles, list markers and typography. Markdown or numbering inside an analysis cannot change the document structure. The compatibility percentage is intentionally left blank for the HR professional to assess and fill in manually.
-
-The generated evaluation is organized into four core sections:
-
-1. **Compatibility with the Position** — percentage left blank for manual HR assessment
+1. **Compatibility with the Position** 
 2. **General Impression and Positioning**
 3. **Strengths for the Position**
-4. **Interview Questions** — at least three questions tailored to the position
+4. **Interview Questions**
 
----
 
 ## 💻 System Requirements
 
@@ -54,7 +36,6 @@ The generated evaluation is organized into four core sections:
 | **Python** | Python 3.9 or newer |
 | **Ollama** | Installed and running with `qwen2.5:3b` model |
 
----
 
 ## 🚀 Quick Start Guide
 
@@ -86,7 +67,7 @@ python main.py
 
 <br>
 
-📁 Project Structure
+## 📁 Project Structure
 ```Plaintext
 .
 ├── resumes/           # Resume PDF files
