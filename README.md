@@ -10,22 +10,21 @@ An AI-powered CLI application that uses Ollama (`qwen2.5:3b`) to compare resume 
 
 ## 📌 Features
 
-- **Local PDF Discovery**: Automatically detects resume `.pdf` files in the project root directory and job `.pdf` files in the `positions` folder.
+- **Local PDF Discovery**: Automatically detects resume `.pdf` files in the `resumes` folder and job `.pdf` files in the `positions` folder.
 - **Interactive CLI**: Simple terminal prompt to select which resume you want to analyze.
 - **Privacy-First**: Runs 100% locally via Ollama with no external API calls or data sharing.
 - **Structured Evaluation**: Compares the resume with a selected job description and generates detailed professional feedback formatted in Portuguese.
-- **PDF Report Export**: Exports the generated review directly to `output.pdf`.
+- **PDF Report Export**: Saves each generated review in the `output` folder.
 
 ---
 
 ## 📊 Review Structure
 
-The generated evaluation is organized into four core sections:
+The generated evaluation is organized into three core sections:
 
-1. **General Impression and Positioning**
-2. **Strengths**
-3. **Opportunities for Improvement**
-4. **Practical Recommendations**
+1. **Compatibility with the Position**
+2. **General Impression and Positioning**
+3. **Strengths for the Position**
 
 ---
 
@@ -57,7 +56,7 @@ ollama pull qwen2.5:3b
 pip install -r requirements.txt
 ```
 ### 3 - Usage
-\- Place one or more resume PDF files in the same folder as project.py.<br>
+\- Place one or more resume PDF files in the `resumes` folder.<br>
 \- Place one or more job description PDF files in the `positions` folder.<br>
 \- Ensure Ollama is running in the background.<br>
 \- Start the application:<br>
@@ -68,18 +67,18 @@ python project.py
 \- Enter the number corresponding to the resume you wish to review and then the number corresponding to the job description.
 <br>
 
->[!NOTE]
->The report will be saved as output.pdf in the project directory. Running the program again will overwrite the existing output.pdf.
 
 <br>
 
 📁 Project Structure
 ```Plaintext
 .
+├── resumes/           # Resume PDF files
+├── positions/         # Job description PDF files
+├── output/            # Generated review PDFs
 ├── project.py         # Main CLI application logic & PDF processing
-├── positions/             # Job description PDF files
 ├── requirements.txt   # Required Python dependencies
-└── output.pdf         # Generated review PDF (created upon execution)
+└── README.md          # Project documentation
 ```
 ## ⚠️ Important Considerations
 - Text Layer Required: Scanned image-only PDFs without an embedded text layer are not supported.
